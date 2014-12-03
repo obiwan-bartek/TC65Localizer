@@ -1,6 +1,8 @@
 TC65Localizer/build/
 TC65Localizer/deploy/
+TC65Localizer/dist/
 TC65Localizer/nbproject/private/
 TC65Server/build/
 TC65Server/deploy/
+TC65Server/dist/
 TC65Server/nbproject/private/
