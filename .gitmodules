@@ -1,0 +1,3 @@
+[submodule "org.json.me.tc65"]
+	path = org.json.me.tc65
+	url = https://github.com/fclairamb/org.json.me.tc65.git
