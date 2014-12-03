@@ -10,14 +10,20 @@ import javax.microedition.midlet.*;
 /**
  * @author Administrator
  */
-public class IMlet extends MIDlet {
+public class IMletMain extends MIDlet {
+    
+    private ModuleInitializer moduleInitializer;
 
     public void startApp() {
+        moduleInitializer = new ModuleInitializer();
+        moduleInitializer.InitializeModule();
     }
     
     public void pauseApp() {
     }
     
     public void destroyApp(boolean unconditional) {
+        
+        notifyDestroyed();
     }
 }
