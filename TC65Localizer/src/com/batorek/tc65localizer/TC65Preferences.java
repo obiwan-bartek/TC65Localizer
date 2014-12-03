@@ -11,4 +11,20 @@ package com.batorek.tc65localizer;
  */
 public class TC65Preferences {
     
+    public void loadPreferences() {
+        
+    }
+    
+    public void savePreferences() {
+        
+    }
+    
+    public void loadDefaultPreferences() {
+        
+    }
+    
+    public void clearPreferences() {
+        
+    }
+    
 }

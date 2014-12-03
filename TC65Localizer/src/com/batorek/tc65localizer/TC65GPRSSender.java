@@ -12,7 +12,7 @@ package com.batorek.tc65localizer;
 public class TC65GPRSSender implements Runnable{
 
     public void run() {
-    
+                
     }
     
 }

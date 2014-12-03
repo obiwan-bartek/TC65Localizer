@@ -12,12 +12,28 @@ import javax.microedition.midlet.*;
  */
 public class IMletMain extends MIDlet {
     
-    private ModuleInitializer moduleInitializer;
+    public ModuleInitializer moduleInitializer;
+    public TC65GPRSSender tc65GPRSSender;
+    public TC65GPS tc65GPS;
+    public TC65Location tc65Location;
+    public TC65Preferences tc65Preferences;
+    public TC65SMSSupport tc65SMSSupport;
+    public TC65SerialReader tc65serialReader;
+    
 
     public void startApp() {
         moduleInitializer = new ModuleInitializer();
-        moduleInitializer.InitializeModule();     
+        moduleInitializer.InitializeModule();
         
+        if (moduleInitializer.isInitialized()) {
+            tc65GPRSSender = new TC65GPRSSender();
+            tc65GPS = new TC65GPS();
+            tc65Location = new TC65Location();
+            tc65Preferences = new TC65Preferences();
+            tc65SMSSupport = new TC65SMSSupport();
+            tc65serialReader = new TC65SerialReader();
+            
+        }        
     }
     
     public void pauseApp() {
