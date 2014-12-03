@@ -8,7 +8,7 @@ package com.batorek.tc65localizer;
 import javax.microedition.midlet.*;
 
 /**
- * @author Administrator
+ * @author Bartosz Batorek
  */
 public class IMletMain extends MIDlet {
     
