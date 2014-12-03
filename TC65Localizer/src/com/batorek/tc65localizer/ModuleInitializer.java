@@ -21,11 +21,10 @@ public class ModuleInitializer {
         return initialized;
     }    
     
-    public void InitializeModule() throws InterruptedException{
+    public void InitializeModule(){
         
         for (int i = 0; i < 10; i++) {
-            System.out.println(String.valueOf(i) + "Main code running...");
-            Thread.sleep(1000);
+            System.out.println(String.valueOf(i) + "Main code running...");            
         }
         setInitialized(true);
     }
