@@ -16,10 +16,13 @@ public class IMletMain extends MIDlet {
 
     public void startApp() {
         moduleInitializer = new ModuleInitializer();
-        moduleInitializer.InitializeModule();        
+        moduleInitializer.InitializeModule();     
+        
     }
     
     public void pauseApp() {
+        
+        notifyPaused();
     }
     
     public void destroyApp(boolean unconditional) {
