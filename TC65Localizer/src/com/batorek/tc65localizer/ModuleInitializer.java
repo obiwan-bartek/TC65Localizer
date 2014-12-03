@@ -21,11 +21,8 @@ public class ModuleInitializer {
         return initialized;
     }    
     
-    public void InitializeModule(){
-        
-        for (int i = 0; i < 10; i++) {
-            System.out.println(String.valueOf(i) + "Main code running...");            
-        }
+    public void InitializeModule() {
+
         setInitialized(true);
     }
     
