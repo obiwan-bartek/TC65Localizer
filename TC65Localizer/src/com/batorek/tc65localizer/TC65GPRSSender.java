@@ -5,14 +5,31 @@
  */
 package com.batorek.tc65localizer;
 
+import com.batorek.tc65localizer.classes.TC65Runnable;
+
 /**
  *
  * @author Administrator
  */
-public class TC65GPRSSender implements Runnable{
+public class TC65GPRSSender extends TC65Runnable {
+    
+    IMletMain iMletMain; // reference to instance of main class
 
-    public void run() {
-                
+    public TC65GPRSSender(IMletMain iMletMain) {
+        this.iMletMain = iMletMain;
     }
+
+    public void beforeMainLoop() {
+        
+    }
+
+    public void mainLoop() {
+        
+    }
+
+    public void afterMainLoop() {
+        
+    }
+
     
 }

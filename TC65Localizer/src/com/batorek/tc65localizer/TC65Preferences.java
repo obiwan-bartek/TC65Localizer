@@ -10,9 +10,18 @@ package com.batorek.tc65localizer;
  * @author Administrator
  */
 public class TC65Preferences {
+
+    public TC65Preferences() {
+        if (!this.loadPreferences()) {
+            clearPreferences();
+            loadDefaultPreferences();
+            savePreferences();
+        } 
+    }
     
-    public void loadPreferences() {
+    public boolean loadPreferences() {
         
+        return false;
     }
     
     public void savePreferences() {

@@ -6,6 +6,18 @@
             <name>TC65Localizer</name>
             <minimum-ant-version>1.6</minimum-ant-version>
         </data>
-        <references xmlns="http://www.netbeans.org/ns/ant-project-references/2"/>
+        <references xmlns="http://www.netbeans.org/ns/ant-project-references/2">
+            <reference>
+                <foreign-project>org_json_me_tc65</foreign-project>
+                <artifact-type>jar</artifact-type>
+                <script>${project.org_json_me_tc65}/build.xml</script>
+                <target>jar</target>
+                <clean-target>clean</clean-target>
+                <id>jar</id>
+                <properties>
+                    <property name="config.active"/>
+                </properties>
+            </reference>
+        </references>
     </configuration>
 </project>
