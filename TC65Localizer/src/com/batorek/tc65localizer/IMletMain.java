@@ -5,12 +5,15 @@
  */
 package com.batorek.tc65localizer;
 
+import com.batorek.tc65localizer.classes.Logger;
 import javax.microedition.midlet.*;
 
 /**
  * @author Bartosz Batorek
  */
 public class IMletMain extends MIDlet {
+    
+    public Logger logger;
     
     public ModuleInitializer moduleInitializer;
     public TC65Preferences tc65Preferences;
@@ -21,6 +24,8 @@ public class IMletMain extends MIDlet {
     public TC65SMSSupport tc65SMSSupport;
     
     public void startApp() {
+        logger = new Logger();
+        
         moduleInitializer = new ModuleInitializer();
         moduleInitializer.InitializeModule();
         

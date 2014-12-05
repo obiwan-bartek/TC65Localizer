@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.batorek.tc65localizer;
+package com.batorek.tc65localizer.classes;
+
+import com.batorek.tc65localizer.IMletMain;
 
 /**
  *
  * @author Administrator
  */
-public class TC65GPS {
-
+public abstract class TC65Class {
     IMletMain iMletMain; // reference to instance of main class
+
+//    public TC65Class() {
+//    }    
     
-    public TC65GPS(IMletMain iMletMain) {
+    public TC65Class(IMletMain iMletMain) {
         this.iMletMain = iMletMain;
-    }
-    
-    public void parseNMEA(String sentence) {
-        //System.out.println(sentence);
-    }
+    }    
     
 }

@@ -13,7 +13,7 @@ public abstract class TC65Runnable implements Runnable{
     private boolean interrupted;
     private final Thread thread;
 
-    public TC65Runnable() {        
+    public TC65Runnable() {      
         this.interrupted = false;
         String className;
         className = this.getClass().getName();
