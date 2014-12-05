@@ -39,9 +39,9 @@ public class IMletMain extends MIDlet {
             
             tc65serialReader.start();
             
-            tc65GPRSSender.start();
+            //tc65GPRSSender.start();
             
-            tc65SMSSupport.start();            
+            //tc65SMSSupport.start();            
         }        
     }
     
