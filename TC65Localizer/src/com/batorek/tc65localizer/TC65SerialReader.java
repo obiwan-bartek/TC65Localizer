@@ -35,7 +35,7 @@ public class TC65SerialReader extends TC65Runnable{
         try {
             comm = (CommConnection) Connector.open("comm:com0;baudrate=9600;blocking=off");
             is = comm.openInputStream();
-            //os = comm.openOutputStream();
+            os = comm.openOutputStream();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -45,9 +45,16 @@ public class TC65SerialReader extends TC65Runnable{
         try {
             //System.out.println("mainLoop SerialReader");
             
+            if (comm.getBaudRate() != 9600){
+                comm.setBaudRate(9600);
+            }
+            
             if (is.available() > 0) {
             
                 input = is.read(); //read data from COM port
+                
+                os.write(input); //forward the data to output
+                
 
                 //System.out.println((char) input);
 
@@ -58,22 +65,22 @@ public class TC65SerialReader extends TC65Runnable{
                         int senStart = sentence.indexOf("$"); //NMEA sentence start
                         int senStop = sentence.indexOf("*"); //NMEA sentence stop, discard hash code
                         if (senStart >= 0 && senStop >= 0) {
-                            sentence = sentence.substring(senStart, senStop); //copy (trim) only real NMEA sentence with leading '$'
+                            sentence = sentence.substring(senStart, senStop+1); //copy (trim) only real NMEA sentence with leading '$'
                         }
-                        System.out.println(sentence);
+                        //System.out.println(sentence);                        
                         iMletMain.tc65GPS.parseNMEA(sentence);
                     }
                     sentence = ""; //clear sentence for new data
                 }
 
-                Thread.sleep(500);
+                //Thread.sleep(500);
             
             }
             
         } catch (IOException ex) {
             ex.printStackTrace();
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
+//        } catch (InterruptedException ex) {
+//            ex.printStackTrace();
         }
     }
 
