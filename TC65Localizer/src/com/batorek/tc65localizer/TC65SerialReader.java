@@ -23,7 +23,7 @@ public class TC65SerialReader extends TC65Runnable{
     CommConnection comm;
     InputStream is;
     OutputStream os;
-    String sentence;
+    String sentence, sentence2;
     int input;
     
     public TC65SerialReader(IMletMain iMletMain) {
@@ -53,24 +53,20 @@ public class TC65SerialReader extends TC65Runnable{
             
                 input = is.read(); //read data from COM port
                 
-                os.write(input); //forward the data to output
+                //os.write(input); //forward the data to output
                 
-
                 //System.out.println((char) input);
 
                 if (input != 13 && input != 10 && input != -1) { //catch CR, LF or end of stream
                     sentence = sentence + (char) input; //collect all letters (bytes) until CR, LF or end of stream is reached            
                 } else {
-                    if (sentence.length() > 6) { //to have non-empty string
-                        int senStart = sentence.indexOf("$"); //NMEA sentence start
-                        int senStop = sentence.indexOf("*"); //NMEA sentence stop, discard hash code
-                        if (senStart >= 0 && senStop >= 0) {
-                            sentence = sentence.substring(senStart, senStop+1); //copy (trim) only real NMEA sentence with leading '$'
-                        }
+                    sentence2 = iMletMain.tc65GPS.validateSentence(sentence); 
+                    if (sentence2 != null) { // checks if sentence is valid
                         //System.out.println(sentence);                        
-                        iMletMain.tc65GPS.parseNMEA(sentence);
+                        iMletMain.tc65GPS.parseNMEA(sentence2);
                     }
                     sentence = ""; //clear sentence for new data
+                    sentence2 = "";
                 }
 
                 //Thread.sleep(500);
