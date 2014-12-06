@@ -19,13 +19,9 @@ public class TC65GPS {
         this.iMletMain = iMletMain;
     }
     
-    public void parseNMEA(String sentence) throws IOException {
-        //System.out.println(sentence);
-        for (int i = 0; i <= sentence.length()-1; i++) {
-            iMletMain.tc65serialReader.os.write(sentence.charAt(i));
-        }   
-        iMletMain.tc65serialReader.os.write(13);
-        iMletMain.tc65serialReader.os.write(10);
+    public void parseNMEA(String sentence)  {
+
+        
     }
     
     public String validateSentence(String sentence) {        
@@ -39,9 +35,27 @@ public class TC65GPS {
             return null;
         }
 
-        sentence = sentence.substring(senStart, senStop + 3); //copy (trim) only real NMEA sentence with leading '$'
+        //System.out.println(sentence);
+        String sentenceOut = sentence.substring(senStart, senStop); //copy (trim) only real NMEA sentence with leading '$'
 
-        return sentence;
+        if (!sentence.substring(senStop + 1, senStop + 3).equalsIgnoreCase(generateChecksum(sentenceOut))) {
+            return null;
+        }        
+        return sentenceOut;
+    }
+    
+    public String generateChecksum(String sentence){
+        int checksum = 0;
+        for (int i = 1; i < sentence.length(); i++) { // start from 1 because of $ sign
+            checksum = checksum ^ sentence.charAt(i);
+        }
+        String result = Integer.toHexString(checksum).toUpperCase();
+        
+        if (result.length() == 1) { //padding
+            result = "0" + result;
+        }
+        
+        return result;       
     }
     
 }

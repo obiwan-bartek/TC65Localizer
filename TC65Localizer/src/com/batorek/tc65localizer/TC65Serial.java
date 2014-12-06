@@ -59,11 +59,17 @@ public class TC65Serial extends TC65Runnable{
 
                 if (input != 13 && input != 10 && input != -1) { //catch CR, LF or end of stream
                     sentence = sentence + (char) input; //collect all letters (bytes) until CR, LF or end of stream is reached            
-                } else {
+                } else if (sentence != "") {
                     sentence2 = iMletMain.tc65GPS.validateSentence(sentence); 
                     if (sentence2 != null) { // checks if sentence is valid
-                        //System.out.println(sentence);                        
+                        //System.out.println(sentence);          
+                        
                         iMletMain.tc65GPS.parseNMEA(sentence2);
+                        //os.write("OK\r\n".getBytes());
+                        //System.out.println("OK");
+                    }else{
+                        //os.write("Fail\r\n".getBytes());
+                        //System.out.println("Fail");
                     }
                     sentence = ""; //clear sentence for new data
                     sentence2 = "";
