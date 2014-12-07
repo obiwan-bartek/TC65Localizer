@@ -20,8 +20,9 @@ public class TC65Location {
     private String date = " ";
     private String time = " ";
     private String fix = "No valid Fix";
-    private String satellitesUsed = " ";
-    private String hdop = " ";
+    private String fixD = "No valid Fix";
+    private int satellitesUsed = 0;
+    private float hdop = 0.0f;
 
     public void setLatitude(String lat) {
         this.latitude = lat;
@@ -40,11 +41,15 @@ public class TC65Location {
     }
 
     public void setAltitude(String alt) {
-        this.altitude = Float.parseFloat(alt);
+        if (!alt.equals("") && !alt.equals(" ")) {
+            this.altitude = Float.parseFloat(alt);
+        }
     }
 
     public void setSpeed(String speed) {
-        this.speed = Float.parseFloat(speed);
+        if (!speed.equals("") && !speed.equals(" ")) {
+            this.speed = Float.parseFloat(speed);
+        }
     }
 
     public void setDate(String date) {
@@ -59,25 +64,37 @@ public class TC65Location {
         this.fix = fix;
     }
     
+    public void setFixD(String fixD) {
+        this.fixD = fixD;
+    }
+    
     public void setSatellitesUsed(String satellitesUsed) {
-        this.satellitesUsed = satellitesUsed;
+        if (!satellitesUsed.equals("") && !satellitesUsed.equals(" ")) {
+            this.satellitesUsed = Integer.parseInt(satellitesUsed);
+        }
     }
     
     public void setHDOP(String hdop) {
-        this.hdop = hdop;
+        if (!hdop.equals("") && !hdop.equals(" ")) {
+            this.hdop = Float.parseFloat(hdop);
+        }
     }
 
-    public int getLatDegrees() {
+    public int getLatDegrees() {                
         int latD = 0;
-
-        latD = Integer.parseInt(latitude.substring(0, 2));
+        
+        if (this.latitude.length() > 3) {
+            latD = Integer.parseInt(this.latitude.substring(0, 2));
+        }
         return latD;
     }
 
     public float getLatMinutes() {
         float latM = 0f;
-
-        latM = Float.parseFloat(latitude.substring(2, latitude.length() - 1));
+        
+        if (this.latitude.length() > 4) {
+            latM = Float.parseFloat(this.latitude.substring(2, this.latitude.length() - 1));
+        }
         return latM;
     }
 
@@ -99,14 +116,18 @@ public class TC65Location {
     public int getLonDegrees() {
         int lonD = 0;
 
-        lonD = Integer.parseInt(longitude.substring(0, 3));
+        if (this.longitude.length() > 4) {
+            lonD = Integer.parseInt(this.longitude.substring(0, 3));
+        }
         return lonD;
     }
 
     public float getLonMinutes() {
         float lonM = 0f;
 
-        lonM = Float.parseFloat(longitude.substring(3, longitude.length() - 1));
+        if (this.longitude.length() > 5) {
+            lonM = Float.parseFloat(this.longitude.substring(3, this.longitude.length() - 1));
+        }
         return lonM;
     }
 
@@ -145,21 +166,46 @@ public class TC65Location {
         return this.fix;
     }
     
-    public String getSatellitesUsed() {
+    public String getFixD() {
+        return this.fixD;
+    }
+    
+    public int getSatellitesUsed() {
         return this.satellitesUsed;
     }
     
-    public String getHDOP() {
+    public float getHDOP() {
         return this.hdop;
     }
 
-    public boolean getFixValid() {
+    public boolean isFixValid() {
 
-        if (this.fix.equalsIgnoreCase("no valid fix")) {
+        if (this.fix.equalsIgnoreCase("no valid fix") || this.fixD.equalsIgnoreCase("no valid fix")) {
             return false;
         } else {
             return true;
         }
+    }
+    
+    public void printLocationData() {
+        String temp;
+        System.out.println("##############");
+        
+        temp = getLatDir() + " " + String.valueOf(getLatDegrees()) + "* " + Float.toString(getLatMinutes()) + "'   |   "
+                + getLonDir() + " " + String.valueOf(getLonDegrees()) + "* " + Float.toString(getLonMinutes());
+        
+        System.out.println(temp);
+        
+        temp = "Date: " + getDate() + "   Time: " + getTime() + "   Speed: " + Float.toString(getSpeed()) + "   Alt: " + Float.toString(getAltitude())
+                + "   Sat: " + String.valueOf(getSatellitesUsed()) + "   HDOP: " + Float.toString(getHDOP());
+        
+        System.out.println(temp);
+        
+        temp = "Lat: " + Float.toString(getLatDD()) + "   Lon: " + Float.toString(getLonDD()) + "   Fix: " + getFix() + "   FixD: " + getFixD();
+        
+        System.out.println(temp);
+        
+        System.out.println("##############");
     }
 
 }

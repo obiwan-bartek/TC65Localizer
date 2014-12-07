@@ -1,8 +1,8 @@
 MIDlet-1: IMlet, ,com.batorek.tc65localizer.IMletMain
-MIDlet-Jar-Size: 26473
+MIDlet-Jar-Size: 27379
 MIDlet-Jar-URL: TC65Localizer.jar
 MIDlet-Name: TC65Localizer
 MIDlet-Vendor: Bartosz Batorek
-MIDlet-Version: 0.0.24
+MIDlet-Version: 0.0.25
 MicroEdition-Configuration: CLDC-1.1
 MicroEdition-Profile: IMP-NG

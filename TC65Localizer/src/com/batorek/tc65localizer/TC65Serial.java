@@ -53,7 +53,7 @@ public class TC65Serial extends TC65Runnable{
             
                 input = is.read(); //read data from COM port
                 
-                //os.write(input); //forward the data to output
+                os.write(input); //forward the data to output
                 
                 //System.out.println((char) input);
 
@@ -67,6 +67,7 @@ public class TC65Serial extends TC65Runnable{
                         iMletMain.tc65GPS.parseNMEA(sentence2);
                         //os.write("OK\r\n".getBytes());
                         //System.out.println("OK");
+                        iMletMain.tc65Location.printLocationData();
                     }else{
                         //os.write("Fail\r\n".getBytes());
                         //System.out.println("Fail");
@@ -81,8 +82,8 @@ public class TC65Serial extends TC65Runnable{
             
         } catch (IOException ex) {
             ex.printStackTrace();
-//        } catch (InterruptedException ex) {
-//            ex.printStackTrace();
+        } catch (Throwable ex) {
+            ex.printStackTrace();
         }
     }
 
