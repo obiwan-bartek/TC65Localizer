@@ -20,6 +20,8 @@ public class TC65Location {
     private String date = " ";
     private String time = " ";
     private String fix = "No valid Fix";
+    private String satellitesUsed = " ";
+    private String hdop = " ";
 
     public void setLatitude(String lat) {
         this.latitude = lat;
@@ -55,6 +57,14 @@ public class TC65Location {
 
     public void setFix(String fix) {
         this.fix = fix;
+    }
+    
+    public void setSatellitesUsed(String satellitesUsed) {
+        this.satellitesUsed = satellitesUsed;
+    }
+    
+    public void setHDOP(String hdop) {
+        this.hdop = hdop;
     }
 
     public int getLatDegrees() {
@@ -133,6 +143,14 @@ public class TC65Location {
 
     public String getFix() {
         return this.fix;
+    }
+    
+    public String getSatellitesUsed() {
+        return this.satellitesUsed;
+    }
+    
+    public String getHDOP() {
+        return this.hdop;
     }
 
     public boolean getFixValid() {
