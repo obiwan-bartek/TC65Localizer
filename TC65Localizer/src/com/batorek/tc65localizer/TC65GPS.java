@@ -19,9 +19,10 @@ public class TC65GPS {
     
     public TC65GPS(IMletMain iMletMain) {
         this.iMletMain = iMletMain;
+        strSplit = new StrSplit();
     }
     
-    public void parseNMEA(String sentence) {
+    public void parseNMEA(String sentence) throws Throwable{
 
         String[] sentenceData;
         
@@ -57,13 +58,13 @@ public class TC65GPS {
             // sentenceData[2]; //Mode2 1:No Fix, 2:2D, 3:3D
 
             if (sentenceData[2].endsWith("1")) {
-                iMletMain.tc65Location.setFix("No valid Fix");
+                iMletMain.tc65Location.setFixD("No valid Fix");
             }
             if (sentenceData[2].endsWith("2")) {
-                iMletMain.tc65Location.setFix("2D");
+                iMletMain.tc65Location.setFixD("2D");
             }
             if (sentenceData[2].endsWith("3")) {
-                iMletMain.tc65Location.setFix("3D");
+                iMletMain.tc65Location.setFixD("3D");
             }
             // nothing interesting there
         }
@@ -74,9 +75,10 @@ public class TC65GPS {
             //sentenceData[2]; //A:Data valid V:Data not valid            
             if (sentenceData[2].endsWith("V")) {
                 iMletMain.tc65Location.setFix("No valid Fix");
+                iMletMain.tc65Location.setFixD("No valid Fix");
             }
             if (sentenceData[2].endsWith("A")) {
-                iMletMain.tc65Location.setFix("2D");
+                //iMletMain.tc65Location.setFix("2D");
             }
             iMletMain.tc65Location.setLatitude(sentenceData[3]); //Latitude
             iMletMain.tc65Location.setLatitudeDir(sentenceData[4]); //Latitude direction
