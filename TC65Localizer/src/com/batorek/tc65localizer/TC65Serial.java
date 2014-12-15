@@ -25,15 +25,19 @@ public class TC65Serial extends TC65Runnable{
     OutputStream os;
     String sentence, sentence2;
     int input;
+    String serialPort;
+    int serialBaudrate;
     
     public TC65Serial(IMletMain iMletMain) {
         this.iMletMain = iMletMain;
+        this.serialPort = iMletMain.tc65Preferences.serialPort;
+        this.serialBaudrate = iMletMain.tc65Preferences.serialBaudrate;
     }
     
     public void beforeMainLoop() {
         sentence = "";
         try {
-            comm = (CommConnection) Connector.open("comm:com0;baudrate=9600;blocking=off");
+            comm = (CommConnection) Connector.open("comm:" + serialPort + ";baudrate=" + String.valueOf(serialBaudrate) + " ;blocking=off");
             is = comm.openInputStream();
             os = comm.openOutputStream();
         } catch (IOException ex) {
@@ -42,42 +46,30 @@ public class TC65Serial extends TC65Runnable{
     }
 
     public void mainLoop() {
-        try {
-            //System.out.println("mainLoop SerialReader");
+        try {            
+            if (comm.getBaudRate() != serialBaudrate){
+                comm.setBaudRate(serialBaudrate);
+            } // repair baudrate if its broken
             
-            if (comm.getBaudRate() != 9600){
-                comm.setBaudRate(9600);
-            }
-            
-            if (is.available() > 0) {
-            
-                input = is.read(); //read data from COM port
-                
-                os.write(input); //forward the data to output
-                
-                //System.out.println((char) input);
+            if (is.available() > 0) {            
+                input = is.read(); //read data from COM port                
+                //os.write(input); //forward the data to output for debug
 
                 if (input != 13 && input != 10 && input != -1) { //catch CR, LF or end of stream
                     sentence = sentence + (char) input; //collect all letters (bytes) until CR, LF or end of stream is reached            
                 } else if (sentence != "") {
                     sentence2 = iMletMain.tc65GPS.validateSentence(sentence); 
                     if (sentence2 != null) { // checks if sentence is valid
-                        //System.out.println(sentence);          
-                        
+
                         iMletMain.tc65GPS.parseNMEA(sentence2);
-                        //os.write("OK\r\n".getBytes());
-                        //System.out.println("OK");
-                        iMletMain.tc65Location.printLocationData();
+  
+                        //iMletMain.tc65Location.printLocationData(); // debug
                     }else{
-                        //os.write("Fail\r\n".getBytes());
                         //System.out.println("Fail");
                     }
                     sentence = ""; //clear sentence for new data
                     sentence2 = "";
-                }
-
-                //Thread.sleep(500);
-            
+                }      
             }
             
         } catch (IOException ex) {
@@ -90,11 +82,11 @@ public class TC65Serial extends TC65Runnable{
     public void afterMainLoop() {
         try {
             is.close();
+            os.flush();
+            os.close();
             comm.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-    }
-    
-        
+    }        
 }

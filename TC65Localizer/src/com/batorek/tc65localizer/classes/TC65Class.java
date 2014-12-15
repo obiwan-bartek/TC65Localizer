@@ -20,5 +20,4 @@ public abstract class TC65Class {
     public TC65Class(IMletMain iMletMain) {
         this.iMletMain = iMletMain;
     }    
-    
 }

@@ -11,14 +11,14 @@ package com.batorek.tc65localizer;
  */
 public class TC65Location {
 
-    private String latitude = " ";
-    private String latitudeDir = " ";
-    private String longitude = " ";
-    private String longitudeDir = " ";
+    private String latitude = "";
+    private String latitudeDir = "";
+    private String longitude = "";
+    private String longitudeDir = "";
     private float altitude = 0;
     private float speed = 0;
-    private String date = " ";
-    private String time = " ";
+    private String date = "";
+    private String time = "";
     private String fix = "No valid Fix";
     private String fixD = "No valid Fix";
     private int satellitesUsed = 0;
@@ -180,11 +180,19 @@ public class TC65Location {
 
     public boolean isFixValid() {
 
+        if (this.date.equals("") || this.date.equals(" ")) {
+            return false;
+        }
+        
+        if (this.time.equals("") || this.time.equals(" ")) {
+            return false;
+        }
+        
         if (this.fix.equalsIgnoreCase("no valid fix") || this.fixD.equalsIgnoreCase("no valid fix")) {
             return false;
         } else {
             return true;
-        }
+        }  
     }
     
     public void printLocationData() {
@@ -207,5 +215,4 @@ public class TC65Location {
         
         System.out.println("##############");
     }
-
 }

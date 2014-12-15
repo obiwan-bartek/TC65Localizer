@@ -1,11 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * TC65 Localizer
+ * Politechnika Slaska
+ * Elektronika i Telekomunikacja
  */
 package com.batorek.tc65localizer;
 
 import com.batorek.tc65localizer.classes.Logger;
+import com.siemens.icm.io.ATCommandFailedException;
 import javax.microedition.midlet.*;
 
 /**
@@ -15,8 +16,8 @@ public class IMletMain extends MIDlet {
     
     public Logger logger;
     
-    public ModuleInitializer moduleInitializer;
     public TC65Preferences tc65Preferences;
+    public ModuleInitializer moduleInitializer;    
     public TC65Location tc65Location;
     public TC65GPS tc65GPS;
     public TC65Serial tc65Serial;
@@ -26,23 +27,28 @@ public class IMletMain extends MIDlet {
     public void startApp() {
         logger = new Logger();
         
-        moduleInitializer = new ModuleInitializer();
-        moduleInitializer.InitializeModule();
+        tc65Preferences = new TC65Preferences(); // read preferences
         
-        if (moduleInitializer.isInitialized()) {
-            tc65Preferences = new TC65Preferences(); //loading preferences is done in class constructor
+        try {
+            moduleInitializer = new ModuleInitializer(this);
+            moduleInitializer.InitializeModule();
+        } catch (ATCommandFailedException ex) {
+            ex.printStackTrace();
+        }
+        
+        if (moduleInitializer.isInitialized()) {             
             tc65Location = new TC65Location();
             tc65GPS = new TC65GPS(this);
             tc65Serial = new TC65Serial(this);
-            tc65GPRSSender = new TC65GPRSSender(this);           
-            tc65SMSSupport = new TC65SMSSupport(this);           
-            
+            tc65GPRSSender = new TC65GPRSSender(this);
+            tc65SMSSupport = new TC65SMSSupport(this);
+
+            // start threads
             tc65Serial.start();
-            
-            //tc65GPRSSender.start();
-            
-            //tc65SMSSupport.start();            
-        }        
+            tc65GPRSSender.start();
+            //tc65SMSSupport.start();
+        }
+
     }
     
     public void pauseApp() {
@@ -52,17 +58,13 @@ public class IMletMain extends MIDlet {
     
     public void destroyApp(boolean unconditional) {
         try {
-            tc65Serial.stop();
-            
-            tc65GPRSSender.stop();
-            
-            tc65SMSSupport.stop();
-        
+            tc65Serial.stop();            
+            tc65GPRSSender.stop();            
+            tc65SMSSupport.stop();        
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
         
-        notifyDestroyed();
-        
+        notifyDestroyed();        
     }
 }

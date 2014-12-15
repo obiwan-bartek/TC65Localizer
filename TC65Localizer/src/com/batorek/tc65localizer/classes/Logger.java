@@ -12,11 +12,8 @@ package com.batorek.tc65localizer.classes;
 public class Logger {
 
     private int loggingLevel = 3;
-
     public boolean L_DEBUG;
-
     public boolean L_VERBOSE;
-
     public boolean L_WARNING;
 
     public Logger() {
@@ -57,8 +54,5 @@ public class Logger {
         log(str + " ex : " + ex.getClass() + " : " + ex.getMessage());
 
         Thread.yield();
-    }
-
-    
-    
+    }    
 }

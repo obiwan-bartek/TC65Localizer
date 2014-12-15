@@ -10,6 +10,12 @@ package com.batorek.tc65localizer;
  * @author Administrator
  */
 public class TC65Preferences {
+    public String serverUrl;
+    public String gprsApn;
+    public String gprsUser;
+    public String gprsPass;
+    public String serialPort;
+    public int serialBaudrate;
 
     public TC65Preferences() {
         if (!this.loadPreferences()) {
@@ -20,7 +26,7 @@ public class TC65Preferences {
     }
     
     public boolean loadPreferences() {
-        
+        // preferences read from chip flash or nvram
         return false;
     }
     
@@ -29,11 +35,15 @@ public class TC65Preferences {
     }
     
     public void loadDefaultPreferences() {
-        
+        this.serverUrl = "http://54.165.186.60:8080/TC65Localizer/SaveData.do";
+        this.gprsApn = "internet";
+        this.gprsUser = "internet";
+        this.gprsPass = "internet";
+        this.serialPort = "com0";
+        this.serialBaudrate = 9600;
     }
     
     public void clearPreferences() {
         
-    }
-    
+    }    
 }

@@ -53,7 +53,6 @@ public class TC65GPS {
         }
 
         if (sentenceData[0].equals("$GPGSA")) {
-
             // sentenceData[1]; //Mode1 M:Manual 2D/3D, A:Auto 2D/3D
             // sentenceData[2]; //Mode2 1:No Fix, 2:2D, 3:3D
 
@@ -94,15 +93,13 @@ public class TC65GPS {
     public String validateSentence(String sentence) {        
         if (sentence.length() < 6){
             return null;
-        }
-        
+        }        
         int senStart = sentence.indexOf("$"); //NMEA sentence start
         int senStop = sentence.indexOf("*"); //NMEA sentence stop, discard hash code
         if ((senStart < 0 || senStop < 0) || sentence.length() < senStop+3) {
             return null;
         }
 
-        //System.out.println(sentence);
         String sentenceOut = sentence.substring(senStart, senStop); //copy (trim) only real NMEA sentence with leading '$', discard checksum
 
         if (!sentence.substring(senStop + 1, senStop + 3).equalsIgnoreCase(generateChecksum(sentenceOut))) {
@@ -120,9 +117,7 @@ public class TC65GPS {
         
         if (result.length() == 1) { //padding
             result = "0" + result;
-        }
-        
+        }        
         return result;       
-    }
-    
+    }    
 }

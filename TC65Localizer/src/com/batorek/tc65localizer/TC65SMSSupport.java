@@ -34,6 +34,5 @@ public class TC65SMSSupport extends TC65Runnable{
 
     public void afterMainLoop() {
         
-    }
-    
+    }    
 }

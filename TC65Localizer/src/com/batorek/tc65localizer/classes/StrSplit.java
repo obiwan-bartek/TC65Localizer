@@ -14,7 +14,6 @@ import java.util.Vector;
 public class StrSplit {
 
     public String[] split(char separator, String sourceString) {
-
         String dataString;
         String[] arrayString;
         Vector tokenVector;
@@ -48,6 +47,5 @@ public class StrSplit {
             arrayString[i] = (String) (tokenVector.elementAt(i));
         }
         return arrayString;
-
     }
 }

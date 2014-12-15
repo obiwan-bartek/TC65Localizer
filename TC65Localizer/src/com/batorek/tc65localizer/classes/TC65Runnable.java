@@ -24,10 +24,6 @@ public abstract class TC65Runnable implements Runnable{
         return this.interrupted;
     }
     
-//    public void interrupt() {
-//        this.interrupted = true;
-//    }
-    
     public void start() {
         this.interrupted = false;
         this.thread.start();
@@ -39,14 +35,11 @@ public abstract class TC65Runnable implements Runnable{
         thread.join();
     }
 
-    public void run() {
-        
-        this.beforeMainLoop();
-        
+    public void run() {        
+        this.beforeMainLoop();        
         while(!this.isInterrupted()){
             this.mainLoop();
-        }
-        
+        }        
         this.afterMainLoop();
     }
     
