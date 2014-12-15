@@ -71,8 +71,10 @@ public class SaveData extends HttpServlet {
 
             boolean result = false;
             try {
-                result = saveData(uid, date, time, lat, lat_d, lon, lon_d);
+                result = saveDataSQL(uid, date, time, lat, lat_d, lon, lon_d);
             } catch (SQLException ex) {
+                out.println("Exception");
+                out.println(ex.toString());
                 Logger.getLogger(SaveData.class.getName()).log(Level.SEVERE, null, ex);
             }
 
@@ -126,8 +128,10 @@ public class SaveData extends HttpServlet {
         return "TC65 Localizer Save Data";
     }// </editor-fold>
 
-    public boolean saveData(String uid, String date, String time, String lat, String lat_d, String lon, String lon_d) throws SQLException {
-        boolean result = false;
+    public boolean saveDataSQL(String uid, String date, String time, String lat, String lat_d, String lon, String lon_d) throws SQLException {
+        boolean result;
+        result = false;
+        
         Connection dbConn;
 
         dbConn = DriverManager.getConnection("jdbc:postgresql://" + DB_URL + "/" + DB_NAME, DB_USER, DB_PASS);
