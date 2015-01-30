@@ -33,6 +33,8 @@
             <hr>
             <br>
             <a href="ShowRoutes.do">Zarejestrowane trasy obiektów --></a>
+            <br>
+            <a href="www.github.com/obiwan-bartek/TC65Localizer">Kod źródłowy w serwisie GitHub</a>
         </div>
     </body>
 </html>
