@@ -24,7 +24,7 @@
             <h2>Układ zdalnej lokalizacji obiektów ruchomych.</h2>
             <h3>Remote location aquisition system of moving objects.</h3><br>
             <br><br>
-            <h2>Autor: Bartosz BĄTOREK</h2><br>
+            <h2>Autor: inż. Bartosz BĄTOREK</h2><br>
             <h3>Kierunek: Elektronika i telekomunikacja</h3>
             <h3>Specjalność: Komputerowe Systemy Sterowania</h3>
             <h3>Rok: 2013/2014</h3><br>
@@ -33,6 +33,8 @@
             <hr>
             <br>
             <a href="ShowRoutes.do">Zarejestrowane trasy obiektów --></a>
+            <br>
+            <a href="www.github.com/obiwan-bartek/TC65Localizer">Kod zrodlowy w serwisie GitHub</a>
         </div>
     </body>
 </html>
