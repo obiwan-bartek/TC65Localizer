@@ -71,7 +71,7 @@ public class DelRoute extends HttpServlet {
             out.println("<body>");
             out.println("<h2>Usunięto</h2>");
             out.println("<br>");
-            out.println("<a href=\"Tracks.do\">Wróć</a>");
+            out.println("<a href=\"ShowRoutes.do\">Wróć</a>");
             out.println("</body>");
             out.println("</html>");
 

@@ -101,10 +101,10 @@ public class ShowRoutes extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>TC65 Localizer: wybierz trasę</title>");
-            out.println("<script type=\"text/javascript\">"
-                    + "function ask(uid){"
-                    + "if(confirm(\"Are you sure to delete?\"))"
-                    + "{window.location.href = \"DelRoute.do?uid=\" + uid;}}"
+            out.println("<script type=\"text/javascript\">\n"
+                    + "function ask(uid){\n"
+                    + "if(confirm(\"Are you sure to delete?\"))\n"
+                    + "{window.location.href = \"DelRoute.do?uid=\" + uid;}}\n"
                     + "</script>");              
             out.println("</head>");
             out.println("<body>");
