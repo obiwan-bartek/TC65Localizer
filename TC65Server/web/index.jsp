@@ -14,7 +14,6 @@
     <body>
         <div align="center">
             <img alt="logo"  src="img/polsl.gif">
-            <!-- <img src="img/elektr.gif"><br>   -->
             <h1>Politechnika Śląska w Gliwicach</h1>
             <h1>Wydział Elektryczny</h1>
             <br>
