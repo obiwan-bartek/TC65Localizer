@@ -101,7 +101,11 @@ public class ShowRoutes extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>TC65 Localizer: wybierz trasę</title>");
-            
+            out.println("<script type=\"text/javascript\">"
+                    + "function ask(uid){"
+                    + "if(confirm(\"Are you sure to delete?\"))"
+                    + "{window.location.href = \"DelRoute.do?uid=\" + uid;}}"
+                    + "</script>");              
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Wybierz trasę:</h1><br>");
@@ -128,37 +132,19 @@ public class ShowRoutes extends HttpServlet {
                 out.print("<td>");
                 out.print(times[i]);
                 out.println("</td>");
-                out.print("<td>");
-                out.print("<a href=\"DelRoute.do?uid=");
+                out.print("<td>");                
+//                out.print("<a href=\"DelRoute.do?uid=");
+//                out.print(uids[i]);
+//                out.print("\">");
+//                out.print("Usuń");
+//                out.print("</a>");
+                out.print("<INPUT TYPE=\"submit\" onclick=\"ask('");
                 out.print(uids[i]);
-                out.print("\">");
-                out.print("Usuń");
-                out.print("</a>");
+                out.print("');\" VALUE=\"Usuń\"/>");
                 out.print("</td>");
                 out.println("</tr>");
-            }
+            }            
             
-            /*
-            <HTML>
- <HEAD>
-  <TITLE> New Document </TITLE>
-
-      <script type="text/javascript">function check(uid){
-                  if(confirm("Are you sure?")){
-                        window.location.href = "http://www.gg." + str;
-                  }else{
-                      alert("not sure " + str);
-                  }
-            }
-      </script>      
- </HEAD>
-      
- <BODY>
-      <INPUT TYPE="submit" onclick="check('er');" VALUE="Usuń"/>
- </BODY>
-</HTML>
-            */
-
             out.println("</table>");
             out.println("<br>");
             out.println("<a href=\"index.jsp\">Wróć</a>");

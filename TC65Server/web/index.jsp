@@ -36,6 +36,8 @@
             <a href="ShowRoutes.do">Zarejestrowane trasy obiektów --></a>
             <br>
             <a href="www.github.com/obiwan-bartek/TC65Localizer">Kod źródłowy w serwisie GitHub</a>
+            <br>
+            <a href="bartosz_batorek_mgr.pdf">Praca magisterska w formacie PDF</a>
         </div>
     </body>
 =======
