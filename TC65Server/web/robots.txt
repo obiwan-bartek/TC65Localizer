@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /TC65Server/DelRoute.do
+Disallow: /TC65Server/GetXml.do
+Disallow: /TC65Server/SaveData.do
+#Disallow: /TC65Server/ShowRoutes.do

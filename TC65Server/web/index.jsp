@@ -35,5 +35,7 @@
             <a href="ShowRoutes.do">Zarejestrowane trasy obiektów --></a>
             <br>
             <br>
+            <hr>
+            <p align="left"><font size="1">batorek.pl</font></p>
         </div>
     </body>
