@@ -14,7 +14,6 @@
     <body>
         <div align="center">
             <img alt="logo"  src="img/polsl.gif">
-            <!-- <img src="img/elektr.gif"><br>   -->
             <h1>Politechnika Śląska w Gliwicach</h1>
             <h1>Wydział Elektryczny</h1>
             <br>
@@ -24,7 +23,7 @@
             <h2>Układ zdalnej lokalizacji obiektów ruchomych.</h2>
             <h3>Remote location aquisition system of moving objects.</h3><br>
             <br><br>
-            <h2>Autor: Bartosz BĄTOREK</h2><br>
+            <h2>Autor: inż. Bartosz BĄTOREK</h2><br>
             <h3>Kierunek: Elektronika i telekomunikacja</h3>
             <h3>Specjalność: Komputerowe Systemy Sterowania</h3>
             <h3>Rok: 2013/2014</h3><br>
