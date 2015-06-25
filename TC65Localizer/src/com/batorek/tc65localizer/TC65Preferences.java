@@ -35,7 +35,7 @@ public class TC65Preferences {
     }
     
     public void loadDefaultPreferences() {
-        this.serverUrl = "http://54.165.186.60:8080/TC65Server/SaveData.do";
+        this.serverUrl = "http://batorek.pl/TC65Server/SaveData.do";
         this.gprsApn = "internet";
         this.gprsUser = "internet";
         this.gprsPass = "internet";

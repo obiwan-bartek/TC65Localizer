@@ -54,16 +54,18 @@ public class TC65Serial extends TC65Runnable{
             if (is.available() > 0) {            
                 input = is.read(); //read data from COM port                
                 //os.write(input); //forward the data to output for debug
+                //System.out.println((char)input); // debug
 
                 if (input != 13 && input != 10 && input != -1) { //catch CR, LF or end of stream
                     sentence = sentence + (char) input; //collect all letters (bytes) until CR, LF or end of stream is reached            
                 } else if (sentence != "") {
-                    sentence2 = iMletMain.tc65GPS.validateSentence(sentence); 
+                    sentence2 = iMletMain.tc65GPS.validateSentence(sentence);
+                    //System.out.println(sentence); //debug
                     if (sentence2 != null) { // checks if sentence is valid
 
                         iMletMain.tc65GPS.parseNMEA(sentence2);
   
-                        //iMletMain.tc65Location.printLocationData(); // debug
+                        iMletMain.tc65Location.printLocationData(); // debug
                     }else{
                         //System.out.println("Fail");
                     }

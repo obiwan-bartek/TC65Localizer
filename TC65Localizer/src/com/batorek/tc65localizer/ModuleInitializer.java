@@ -33,9 +33,21 @@ public class ModuleInitializer implements ATCommandListener{
     }    
     
     public void InitializeModule() throws ATCommandFailedException {
-        
+        //InitializeAutostart();
         InitializeGPRS();
         setInitialized(true);
+    }
+    
+    private void InitializeAutostart() throws ATCommandFailedException {
+
+        String resp = this.atc.send("AT^SCFG=\"Userware/Autostart/Delay\",\"\",\"100\""); // Autostart conf
+        System.out.println("Autostart delay CONF: " + resp);
+        
+        resp = this.atc.send("AT^SCFG=\"Userware/Autostart/AppName\",\"\",\"a:/TC65Localizer.jad\""); // Autostart conf
+        System.out.println("Autostart AppName CONF: " + resp);
+        
+        resp = this.atc.send("AT^SCFG=\"Userware/Autostart\",\"\",\"1\""); // Autostart conf
+        System.out.println("Autostart CONF: " + resp);
     }
     
     private void InitializeGPRS() throws ATCommandFailedException {
