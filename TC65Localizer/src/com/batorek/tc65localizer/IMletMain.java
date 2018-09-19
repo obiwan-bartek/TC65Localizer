@@ -1,4 +1,9 @@
 /*
+ *
+ * Copyright (c) 2014 Bartosz Bątorek
+ * Distributed under the MIT License
+ * See LICENSE.txt for further information.
+ *
  * TC65 Localizer
  * Politechnika Slaska
  * Elektronika i Telekomunikacja
