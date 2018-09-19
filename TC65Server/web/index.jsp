@@ -2,6 +2,13 @@
     Document   : index
     Created on : 2014-12-15, 01:29:31
     Author     : Bartosz Batorek
+    
+ *
+ * Copyright (c) 2014 Bartosz Bątorek
+ * Distributed under the MIT License
+ * See LICENSE.txt for further information.
+ *
+    
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
